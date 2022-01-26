@@ -1,6 +1,11 @@
-<html>
-    <head>
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
+
         <title>Snake</title>
+
         <link rel="stylesheet" type="text/css" href="css/global.css">
         <link rel="stylesheet" type="text/css" href="css/game.css">
         <link rel="stylesheet" type="text/css" href="css/settings.css">
@@ -9,11 +14,11 @@
         <a id="top"></a>
         <div id="cover">
             <div class="navigation">
-                <label class="nav-label">You are <input id="player-name" readonly="readonly" maxlength="10"></input></label>
+                <label class="nav-label">You are <input id="player-name" readonly="readonly" maxlength="10"/></label>
                 <div class="nav-button-bar">
                     <a href="#top" id="play-or-watch-button" title="Spectate or rejoin game">Watch</a>
                     <a href="#playerSettings" title="Go to settings">Settings</a>
-                    <button id="full-screen-button" title="Go into full-screen mode"/>
+                    <button id="full-screen-button" title="Go into full-screen mode"></button>
                 </div>
             </div>
             <div id="kill-messages">
@@ -35,7 +40,7 @@
                         <legend>Player Settings</legend>
                         <label id="invalid-player-name-label">Please Enter a Valid Name (10 Characters Max)</label>
                         <ul class="text-button-list">
-                            <li><input id="volumeSlider" type="range" min="0" max="1" step="0.2" value="1"></input><img src="assets/volume-icon.png" class="volume-icon"></img></li>
+                            <li><input id="volumeSlider" type="range" min="0" max="1" step="0.2" value="1"/><img src="assets/volume-icon.png" class="volume-icon" alt="volume control"/></li>
                             <li><button id="toggleSoundButton" class="options-text-button" title="Mute or unmute sound">Mute</button></li>
                         </ul>
                         <ul class="text-button-list">
@@ -54,33 +59,33 @@
                 <div id="adminControls" class="settings-menu">
                     <fieldset>
                         <legend>Admin Controls</legend>
-                        <div class="options-controls" class="settings-menu">
+                        <div class="options-controls settings-menu">
                             <label class="options-label">Speed: </label>
                             <label id="currentSpeed" class="options-value"></label>
-                            <button id="decreaseSpeedButton" class="minus-button" title="-1"/>
-                            <button id="increaseSpeedButton" class="plus-button" title="+1"/>
-                            <button id="resetSpeedButton" class="reset-button" title="Reset to Default"/>
+                            <button id="decreaseSpeedButton" class="minus-button" title="-1"></button>
+                            <button id="increaseSpeedButton" class="plus-button" title="+1"></button>
+                            <button id="resetSpeedButton" class="reset-button" title="Reset to Default"></button>
                         </div>
-                        <div class="options-controls" class="settings-menu">
+                        <div class="options-controls settings-menu">
                             <label class="options-label">Food: </label>
                             <label id="currentFoodAmount" class="options-value"></label>
-                            <button id="decreaseFoodButton" class="minus-button" title="-1"/>
-                            <button id="increaseFoodButton" class="plus-button" title="+1"/>
-                            <button id="resetFoodButton" class="reset-button" title="Reset to Default"/>
+                            <button id="decreaseFoodButton" class="minus-button" title="-1"></button>
+                            <button id="increaseFoodButton" class="plus-button" title="+1"></button>
+                            <button id="resetFoodButton" class="reset-button" title="Reset to Default"></button>
                         </div>
                         <div class="options-controls">
                             <label class="options-label">Bots: </label>
                             <label id="currentNumberOfBots" class="options-value"></label>
-                            <button id="decreaseBotsButton" class="minus-button" title="-1"/>
-                            <button id="increaseBotsButton" class="plus-button" title="+1"/>
-                            <button id="resetBotsButton" class="reset-button" title="Reset to Default"/>
+                            <button id="decreaseBotsButton" class="minus-button" title="-1"></button>
+                            <button id="increaseBotsButton" class="plus-button" title="+1"></button>
+                            <button id="resetBotsButton" class="reset-button" title="Reset to Default"></button>
                         </div>
                         <div class="options-controls">
                             <label class="options-label">Start Length: </label>
                             <label id="currentStartLength" class="options-value"></label>
-                            <button id="decreaseStartLengthButton" class="minus-button" title="-1"/>
-                            <button id="increaseStartLengthButton" class="plus-button" title="+1"/>
-                            <button id="resetStartLengthButton" class="reset-button" title="Reset to Default"/>
+                            <button id="decreaseStartLengthButton" class="minus-button" title="-1"></button>
+                            <button id="increaseStartLengthButton" class="plus-button" title="+1"></button>
+                            <button id="resetStartLengthButton" class="reset-button" title="Reset to Default"></button>
                         </div>
                     </fieldset>
                 </div> 
