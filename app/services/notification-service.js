@@ -1,11 +1,11 @@
 'use strict';
+
 const ServerConfig = require('../configs/server-config');
 
 /**
  * Data broadcasts to all players or a specific player
  */
 class NotificationService {
-
     setSockets(sockets) {
         this.sockets = sockets;
     }
@@ -19,8 +19,14 @@ class NotificationService {
     }
 
     broadcastKill(killerName, victimName, killerColor, victimColor, victimLength) {
-        this.sockets.emit(ServerConfig.IO.OUTGOING.NOTIFICATION.KILL, killerName, victimName,
-            killerColor, victimColor, victimLength);
+        this.sockets.emit(
+            ServerConfig.IO.OUTGOING.NOTIFICATION.KILL,
+            killerName,
+            victimName,
+            killerColor,
+            victimColor,
+            victimLength,
+        );
     }
 
     broadcastKillEachOther(victimSummaries) {
@@ -45,24 +51,15 @@ class NotificationService {
     }
 
     notifyPlayerDied(playerId) {
-        const playerSocket = this.sockets.connected[playerId];
-        if (playerSocket) {
-            playerSocket.emit(ServerConfig.IO.OUTGOING.NOTIFICATION.YOU_DIED);
-        }
+        this.sockets.to(playerId).emit(ServerConfig.IO.OUTGOING.NOTIFICATION.YOU_DIED);
     }
 
     notifyPlayerMadeAKill(playerId) {
-        const playerSocket = this.sockets.connected[playerId];
-        if (playerSocket) {
-            playerSocket.emit(ServerConfig.IO.OUTGOING.NOTIFICATION.YOU_MADE_A_KILL);
-        }
+        this.sockets.to(playerId).emit(ServerConfig.IO.OUTGOING.NOTIFICATION.YOU_MADE_A_KILL);
     }
 
     notifyPlayerFoodCollected(playerId, text, coordinate, color, isSwap) {
-        const playerSocket = this.sockets.connected[playerId];
-        if (playerSocket) {
-            playerSocket.emit(ServerConfig.IO.OUTGOING.NOTIFICATION.FOOD_COLLECTED, text, coordinate, color, isSwap);
-        }
+        this.sockets.to(playerId).emit(ServerConfig.IO.OUTGOING.NOTIFICATION.FOOD_COLLECTED, text, coordinate, color, isSwap);
     }
 }
 
