@@ -9,20 +9,21 @@ import GameView from '../view/game-view.js';
  */
 export default class GameController {
     constructor() {
-        this.gameView = new GameView(this.backgroundImageUploadCallback.bind(this),
-                                     this.botChangeCallback.bind(this),
-                                     this.foodChangeCallback.bind(this),
-                                     this.imageUploadCallback.bind(this),
-                                     this.joinGameCallback.bind(this),
-                                     this.keyDownCallback.bind(this),
-                                     this.muteAudioCallback.bind(this),
-                                     this.playerColorChangeCallback.bind(this),
-                                     this.playerNameUpdatedCallback.bind(this),
-                                     this.spectateGameCallback.bind(this),
-                                     this.speedChangeCallback.bind(this),
-                                     this.startLengthChangeCallback.bind(this),
-                                     this.toggleGridLinesCallback.bind(this)
-                                     );
+        this.gameView = new GameView(
+            this.backgroundImageUploadCallback.bind(this),
+            this.botChangeCallback.bind(this),
+            this.foodChangeCallback.bind(this),
+            this.imageUploadCallback.bind(this),
+            this.joinGameCallback.bind(this),
+            this.keyDownCallback.bind(this),
+            this.muteAudioCallback.bind(this),
+            this.playerColorChangeCallback.bind(this),
+            this.playerNameUpdatedCallback.bind(this),
+            this.spectateGameCallback.bind(this),
+            this.speedChangeCallback.bind(this),
+            this.startLengthChangeCallback.bind(this),
+            this.toggleGridLinesCallback.bind(this),
+        );
         this.audioController = new AudioController();
         this.players = [];
         this.food = {};
@@ -54,9 +55,9 @@ export default class GameController {
                 continue;
             }
             // Flash around where you have just spawned
-            if (`/#${this.socket.id}` === player.id &&
-                    player.moveCounter <= ClientConfig.TURNS_TO_FLASH_AFTER_SPAWN &&
-                    player.moveCounter % 2 === 0) {
+            if (`/#${this.socket.id}` === player.id
+                    && player.moveCounter <= ClientConfig.TURNS_TO_FLASH_AFTER_SPAWN
+                    && player.moveCounter % 2 === 0) {
                 this.canvasView.drawSquareAround(player.segments[0], ClientConfig.SPAWN_FLASH_COLOR);
             }
 
@@ -67,7 +68,7 @@ export default class GameController {
             }
         }
 
-        for (let i = this.textsToDraw.length - 1; i >= 0; i--) {
+        for (let i = this.textsToDraw.length - 1; i >= 0; --i) {
             const textToDraw = this.textsToDraw[i];
             if (textToDraw.counter === ClientConfig.TURNS_TO_SHOW_FOOD_TEXT) {
                 this.textsToDraw.splice(i, 1);
@@ -169,9 +170,7 @@ export default class GameController {
      *******************************/
 
     _createBoard(board) {
-        this.canvasView =
-            CanvasFactory.createCanvasView(
-                board.SQUARE_SIZE_IN_PIXELS, board.HORIZONTAL_SQUARES, board.VERTICAL_SQUARES, this.canvasClicked.bind(this));
+        this.canvasView = CanvasFactory.createCanvasView(board.SQUARE_SIZE_IN_PIXELS, board.HORIZONTAL_SQUARES, board.VERTICAL_SQUARES, this.canvasClicked.bind(this));
         this.canvasView.clear();
         this.gameView.ready();
         this.renderGame();
@@ -205,7 +204,6 @@ export default class GameController {
         this.gameView.showPlayerStats(gameData.playerStats);
     }
 
-
     _initializeSocketIoHandlers() {
         this.socket.on(ClientConfig.IO.INCOMING.NEW_PLAYER_INFO, this.gameView.updatePlayerName);
         this.socket.on(ClientConfig.IO.INCOMING.BOARD_INFO, this._createBoard.bind(this));
@@ -214,14 +212,22 @@ export default class GameController {
         this.socket.on(ClientConfig.IO.INCOMING.NOTIFICATION.FOOD_COLLECTED, this._handleFoodCollected.bind(this));
         this.socket.on(ClientConfig.IO.INCOMING.NOTIFICATION.GENERAL, this.gameView.showNotification);
         this.socket.on(ClientConfig.IO.INCOMING.NOTIFICATION.KILL, this.gameView.showKillMessage.bind(this.gameView));
-        this.socket.on(ClientConfig.IO.INCOMING.NOTIFICATION.KILLED_EACH_OTHER,
-            this.gameView.showKilledEachOtherMessage.bind(this.gameView));
-        this.socket.on(ClientConfig.IO.INCOMING.NOTIFICATION.RAN_INTO_WALL,
-            this.gameView.showRanIntoWallMessage.bind(this.gameView));
+        this.socket.on(
+            ClientConfig.IO.INCOMING.NOTIFICATION.KILLED_EACH_OTHER,
+            this.gameView.showKilledEachOtherMessage.bind(this.gameView),
+        );
+        this.socket.on(
+            ClientConfig.IO.INCOMING.NOTIFICATION.RAN_INTO_WALL,
+            this.gameView.showRanIntoWallMessage.bind(this.gameView),
+        );
         this.socket.on(ClientConfig.IO.INCOMING.NOTIFICATION.SUICIDE, this.gameView.showSuicideMessage.bind(this.gameView));
-        this.socket.on(ClientConfig.IO.INCOMING.NOTIFICATION.YOU_DIED,
-            this.audioController.playDeathSound.bind(this.audioController));
-        this.socket.on(ClientConfig.IO.INCOMING.NOTIFICATION.YOU_MADE_A_KILL,
-            this.audioController.playKillSound.bind(this.audioController));
+        this.socket.on(
+            ClientConfig.IO.INCOMING.NOTIFICATION.YOU_DIED,
+            this.audioController.playDeathSound.bind(this.audioController),
+        );
+        this.socket.on(
+            ClientConfig.IO.INCOMING.NOTIFICATION.YOU_MADE_A_KILL,
+            this.audioController.playKillSound.bind(this.audioController),
+        );
     }
 }

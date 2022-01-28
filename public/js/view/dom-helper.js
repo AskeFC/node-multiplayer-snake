@@ -142,7 +142,6 @@ export default class DomHelper {
         document.getElementById('currentSpeed').innerHTML = text;
     }
 
-
     static setCurrentStartLengthLabelText(text) {
         document.getElementById('currentStartLength').innerHTML = text;
     }
@@ -184,8 +183,8 @@ export default class DomHelper {
     }
 
     static toggleFullScreenMode() {
-        if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-            (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+        if ((document.fullScreenElement && document.fullScreenElement !== null)
+            || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
             if (document.documentElement.requestFullScreen) {
                 document.documentElement.requestFullScreen();
             } else if (document.documentElement.mozRequestFullScreen) {
@@ -193,14 +192,12 @@ export default class DomHelper {
             } else if (document.documentElement.webkitRequestFullScreen) {
                 document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
             }
-        } else {
-            if (document.cancelFullScreen) {
-                document.cancelFullScreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.webkitCancelFullScreen) {
-                document.webkitCancelFullScreen();
-            }
+        } else if (document.cancelFullScreen) {
+            document.cancelFullScreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
         }
     }
 }

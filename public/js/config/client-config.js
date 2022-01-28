@@ -23,8 +23,8 @@ export default {
                 RAN_INTO_WALL: 'ran into wall notification',
                 SUICIDE: 'suicide notification',
                 YOU_DIED: 'you died',
-                YOU_MADE_A_KILL: 'you made a kill',
-            },
+                YOU_MADE_A_KILL: 'you made a kill'
+            }
         },
         OUTGOING: {
             BOT_CHANGE: 'bot change',
@@ -41,17 +41,17 @@ export default {
             NEW_PLAYER: 'new player',
             NAME_CHANGE: 'player changed name',
             KEY_DOWN: 'key down',
-            CANVAS_CLICKED: 'canvas clicked',
-        },
+            CANVAS_CLICKED: 'canvas clicked'
+        }
     },
     MAX_NAME_LENGTH: 10,
     INCREMENT_CHANGE: {
         INCREASE: 'increase',
         DECREASE: 'decrease',
-        RESET: 'reset',
+        RESET: 'reset'
     },
     LOCAL_STORAGE: {
         PLAYER_IMAGE: 'node-multiplayer-snake-player-image',
-        PLAYER_NAME: 'node-multiplayer-snake-player-name',
-    },
+        PLAYER_NAME: 'node-multiplayer-snake-player-name'
+    }
 };

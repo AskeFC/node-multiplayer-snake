@@ -25,7 +25,7 @@ export default class CanvasView {
         }
 
         if (this.showGridLines) {
-            this.context.strokeStyle = '#2a2a2a';
+            this.context.strokeStyle = '#2A2A2A';
             this.context.lineWidth = 0.5;
             for (let i = this.squareSizeInPixels / 2; i < this.width || i < this.height; i += this.squareSizeInPixels) {
                 // draw horizontal lines
@@ -50,8 +50,13 @@ export default class CanvasView {
         const y = coordinate.y * this.squareSizeInPixels;
         const image = new Image();
         image.src = base64Image;
-        this.context.drawImage(image, x - (this.squareSizeInPixels / 2), y - (this.squareSizeInPixels / 2),
-            this.squareSizeInPixels, this.squareSizeInPixels);
+        this.context.drawImage(
+            image,
+            x - (this.squareSizeInPixels / 2),
+            y - (this.squareSizeInPixels / 2),
+            this.squareSizeInPixels,
+            this.squareSizeInPixels,
+        );
     }
 
     drawSquares(coordinates, color) {
@@ -167,7 +172,8 @@ export default class CanvasView {
     _getOpacityFromCounter(counter, turnsToShow) {
         if (counter < turnsToShow * 0.1 || counter > turnsToShow * 0.9) {
             return 0.33;
-        } else if (counter < turnsToShow * 0.2 || counter > turnsToShow * 0.8) {
+        }
+        if (counter < turnsToShow * 0.2 || counter > turnsToShow * 0.8) {
             return 0.66;
         }
         return 1;
@@ -175,7 +181,7 @@ export default class CanvasView {
 
     _initializeClickListeners(canvas, canvasClickHandler) {
         const self = this;
-        canvas.addEventListener('click', event => {
+        canvas.addEventListener('click', (event) => {
             const x = event.pageX - canvas.offsetLeft;
             const y = event.pageY - canvas.offsetTop;
             const xCoord = Math.round(x / self.squareSizeInPixels);

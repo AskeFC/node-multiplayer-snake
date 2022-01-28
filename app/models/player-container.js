@@ -1,7 +1,6 @@
 'use strict';
 
 class PlayerContainer {
-
     constructor() {
         this._players = new Map();
         this._playerIdsToRespawn = new Set();
@@ -45,8 +44,8 @@ class PlayerContainer {
     getAnActivePlayer(excludedPlayerId) {
         const activePlayerIds = [];
         for (const playerId of this._players.keys()) {
-            if (playerId !== excludedPlayerId &&
-                    !this._spectatingPlayerIds.has(playerId) && !this._playerIdsToRespawn.has(playerId)) {
+            if (playerId !== excludedPlayerId
+                    && !this._spectatingPlayerIds.has(playerId) && !this._playerIdsToRespawn.has(playerId)) {
                 activePlayerIds.push(playerId);
             }
         }
@@ -71,7 +70,7 @@ class PlayerContainer {
 
     toJSON() {
         const response = [];
-        this._players.forEach(player => {
+        this._players.forEach((player) => {
             response.push(player);
         });
         return response;

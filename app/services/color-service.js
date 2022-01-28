@@ -4,7 +4,6 @@
  *  Generates new unused colors and stores used colors
  */
 class ColorService {
-
     constructor() {
         this.usedColors = new Set();
     }

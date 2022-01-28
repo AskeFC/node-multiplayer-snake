@@ -1,4 +1,4 @@
-const assert = require('chai').assert;
+const { assert } = require('chai');
 const Coordinate = require('../app/models/coordinate');
 const Direction = require('../app/models/direction');
 const Player = require('../app/models/player');
@@ -23,7 +23,7 @@ describe('PlayerSpawnService', () => {
         boardOccupancyService.addPlayerOccupancy('player3', [new Coordinate(11, 11)]);
     });
 
-    it('should spawn player in an unoccupied space with enough spaces ahead', done => {
+    it('should spawn player in an unoccupied space with enough spaces ahead', (done) => {
         const playerLength = 5;
         const requiredFreeLength = 10;
 

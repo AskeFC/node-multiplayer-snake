@@ -15,29 +15,29 @@ const ServerConfig = {
             TYPE: 'NORMAL',
             COLOR: 'red',
             POINTS: 1,
-            GROWTH: 1,
+            GROWTH: 1
         },
         SUPER: {
             TYPE: 'SUPER',
             COLOR: 'green',
             POINTS: 5,
             GROWTH: 5,
-            SPAWN_RATE: 0.1,
+            SPAWN_RATE: 0.1
         },
         GOLDEN: {
             TYPE: 'GOLDEN',
             COLOR: 'yellow',
             POINTS: 25,
             GROWTH: 25,
-            SPAWN_RATE: 0.01,
+            SPAWN_RATE: 0.01
         },
         SWAP: {
             TYPE: 'SWAP',
             COLOR: 'blue',
             POINTS: 1,
             GROWTH: 1,
-            SPAWN_RATE: 0.05,
-        },
+            SPAWN_RATE: 0.05
+        }
     },
     IO: {
         DEFAULT_CONNECTION: 'connection',
@@ -57,7 +57,7 @@ const ServerConfig = {
             NAME_CHANGE: 'player changed name',
             KEY_DOWN: 'key down',
             CANVAS_CLICKED: 'canvas clicked',
-            DISCONNECT: 'disconnect',
+            DISCONNECT: 'disconnect'
         },
         OUTGOING: {
             NEW_STATE: 'game update',
@@ -72,15 +72,15 @@ const ServerConfig = {
                 RAN_INTO_WALL: 'ran into wall notification',
                 SUICIDE: 'suicide notification',
                 YOU_DIED: 'you died',
-                YOU_MADE_A_KILL: 'you made a kill',
-            },
-        },
+                YOU_MADE_A_KILL: 'you made a kill'
+            }
+        }
     },
     INCREMENT_CHANGE: {
         INCREASE: 'increase',
         DECREASE: 'decrease',
-        RESET: 'reset',
-    },
+        RESET: 'reset'
+    }
 };
 
 module.exports = ServerConfig;

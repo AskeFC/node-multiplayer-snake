@@ -1,4 +1,5 @@
 'use strict';
+
 const Direction = require('../models/direction');
 
 const KEYCODE_TO_DIRECTION = {
@@ -10,14 +11,13 @@ const KEYCODE_TO_DIRECTION = {
     38: Direction.UP,
     37: Direction.LEFT,
     40: Direction.DOWN,
-    39: Direction.RIGHT,
+    39: Direction.RIGHT
 };
 
 /**
  * Handles client inputs
  */
 class GameControlsService {
-
     static getValidNextMove(currentDirection) {
         if (currentDirection === Direction.UP) {
             return [Direction.LEFT, Direction.RIGHT];

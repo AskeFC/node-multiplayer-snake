@@ -1,7 +1,6 @@
 'use strict';
 
 class PlayerStats {
-
     constructor(name, color) {
         this.name = name;
         this.color = color;
@@ -54,7 +53,7 @@ class PlayerStats {
             highScore: this.highScore,
             deaths: this.deaths,
             kills: this.kills,
-            base64Image: this.base64Image,
+            base64Image: this.base64Image
         };
     }
 }

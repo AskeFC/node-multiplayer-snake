@@ -1,11 +1,11 @@
 'use strict';
+
 const Direction = require('../models/direction');
 
 /**
  * Spawns and/or respawns a player with other entities in mind
  */
 class PlayerSpawnService {
-
     constructor(boardOccupancyService) {
         this.boardOccupancyService = boardOccupancyService;
     }
@@ -20,8 +20,7 @@ class PlayerSpawnService {
             const randomValue = Math.random();
             if (randomValue < 0.25) {
                 // Top Left
-                const possibleSpawnCoordinates =
-                    this.boardOccupancyService.getUnoccupiedHorizontalCoordinatesFromTopLeft(requiredFreeLength);
+                const possibleSpawnCoordinates = this.boardOccupancyService.getUnoccupiedHorizontalCoordinatesFromTopLeft(requiredFreeLength);
                 if (possibleSpawnCoordinates.length === 0) {
                     return;
                 }
@@ -34,8 +33,7 @@ class PlayerSpawnService {
                 }
             } else if (randomValue < 0.5) {
                 // Top Right
-                const possibleSpawnCoordinates =
-                    this.boardOccupancyService.getUnoccupiedHorizontalCoordinatesFromTopRight(requiredFreeLength);
+                const possibleSpawnCoordinates = this.boardOccupancyService.getUnoccupiedHorizontalCoordinatesFromTopRight(requiredFreeLength);
                 if (possibleSpawnCoordinates.length === 0) {
                     return;
                 }
@@ -48,8 +46,7 @@ class PlayerSpawnService {
                 }
             } else if (randomValue < 0.75) {
                 // Bottom Right
-                const possibleSpawnCoordinates =
-                    this.boardOccupancyService.getUnoccupiedHorizontalCoordinatesFromBottomRight(requiredFreeLength);
+                const possibleSpawnCoordinates = this.boardOccupancyService.getUnoccupiedHorizontalCoordinatesFromBottomRight(requiredFreeLength);
                 if (possibleSpawnCoordinates.length === 0) {
                     return;
                 }
@@ -62,8 +59,7 @@ class PlayerSpawnService {
                 }
             } else {
                 // Bottom Left
-                const possibleSpawnCoordinates =
-                    this.boardOccupancyService.getUnoccupiedHorizontalCoordinatesFromBottomLeft(requiredFreeLength);
+                const possibleSpawnCoordinates = this.boardOccupancyService.getUnoccupiedHorizontalCoordinatesFromBottomLeft(requiredFreeLength);
                 if (possibleSpawnCoordinates.length === 0) {
                     return;
                 }
@@ -80,8 +76,7 @@ class PlayerSpawnService {
             const randomValue = Math.random();
             if (randomValue < 0.25) {
                 // Top Left
-                const possibleSpawnCoordinates =
-                    this.boardOccupancyService.getUnoccupiedVerticalCoordinatesFromTopLeft(requiredFreeLength);
+                const possibleSpawnCoordinates = this.boardOccupancyService.getUnoccupiedVerticalCoordinatesFromTopLeft(requiredFreeLength);
                 if (possibleSpawnCoordinates.length === 0) {
                     return;
                 }
@@ -94,8 +89,7 @@ class PlayerSpawnService {
                 }
             } else if (randomValue < 0.5) {
                 // Top Right
-                const possibleSpawnCoordinates =
-                    this.boardOccupancyService.getUnoccupiedVerticalCoordinatesFromTopRight(requiredFreeLength);
+                const possibleSpawnCoordinates = this.boardOccupancyService.getUnoccupiedVerticalCoordinatesFromTopRight(requiredFreeLength);
                 if (possibleSpawnCoordinates.length === 0) {
                     return;
                 }
@@ -108,8 +102,7 @@ class PlayerSpawnService {
                 }
             } else if (randomValue < 0.75) {
                 // Bottom Right
-                const possibleSpawnCoordinates =
-                    this.boardOccupancyService.getUnoccupiedVerticalCoordinatesFromBottomRight(requiredFreeLength);
+                const possibleSpawnCoordinates = this.boardOccupancyService.getUnoccupiedVerticalCoordinatesFromBottomRight(requiredFreeLength);
                 if (possibleSpawnCoordinates.length === 0) {
                     return;
                 }
@@ -122,8 +115,7 @@ class PlayerSpawnService {
                 }
             } else {
                 // Bottom Left
-                const possibleSpawnCoordinates =
-                    this.boardOccupancyService.getUnoccupiedVerticalCoordinatesFromBottomLeft(requiredFreeLength);
+                const possibleSpawnCoordinates = this.boardOccupancyService.getUnoccupiedVerticalCoordinatesFromBottomLeft(requiredFreeLength);
                 if (possibleSpawnCoordinates.length === 0) {
                     return;
                 }

@@ -4,7 +4,6 @@
  * Generates names and ids, and stores them so they aren't reused
  */
 class NameService {
-
     constructor() {
         this.usedPlayerNames = new Set();
         this.usedFoodIds = new Set();

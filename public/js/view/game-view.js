@@ -10,9 +10,21 @@ const DOWN_ARROW_KEYCODE = 40;
  * Handles all requests related to the display of the game, not including the canvas
  */
 export default class GameView {
-    constructor(backgroundImageUploadCallback, botChangeCallback, foodChangeCallback, imageUploadCallback,
-        joinGameCallback, keyDownCallback, muteAudioCallback, playerColorChangeCallback, playerNameUpdatedCallback,
-        spectateGameCallback, speedChangeCallback, startLengthChangeCallback, toggleGridLinesCallback) {
+    constructor(
+        backgroundImageUploadCallback,
+        botChangeCallback,
+        foodChangeCallback,
+        imageUploadCallback,
+        joinGameCallback,
+        keyDownCallback,
+        muteAudioCallback,
+        playerColorChangeCallback,
+        playerNameUpdatedCallback,
+        spectateGameCallback,
+        speedChangeCallback,
+        startLengthChangeCallback,
+        toggleGridLinesCallback
+    ) {
         this.isChangingName = false;
         this.backgroundImageUploadCallback = backgroundImageUploadCallback;
         this.imageUploadCallback = imageUploadCallback;
@@ -21,8 +33,15 @@ export default class GameView {
         this.muteAudioCallback = muteAudioCallback;
         this.playerNameUpdatedCallback = playerNameUpdatedCallback;
         this.spectateGameCallback = spectateGameCallback;
-        this._initEventHandling(botChangeCallback, foodChangeCallback, muteAudioCallback, playerColorChangeCallback,
-            speedChangeCallback, startLengthChangeCallback, toggleGridLinesCallback);
+        this._initEventHandling(
+            botChangeCallback,
+            foodChangeCallback,
+            muteAudioCallback,
+            playerColorChangeCallback,
+            speedChangeCallback,
+            startLengthChangeCallback,
+            toggleGridLinesCallback,
+        );
     }
 
     ready() {
@@ -35,8 +54,10 @@ export default class GameView {
         if (this.killMessagesTimeout) {
             clearTimeout(this.killMessagesTimeout);
         }
-        this.killMessagesTimeout = setTimeout(DomHelper.clearKillMessagesDivText.bind(DomHelper),
-            ClientConfig.TIME_TO_SHOW_KILL_MESSAGE_IN_MS);
+        this.killMessagesTimeout = setTimeout(
+            DomHelper.clearKillMessagesDivText.bind(DomHelper),
+            ClientConfig.TIME_TO_SHOW_KILL_MESSAGE_IN_MS,
+        );
     }
 
     setMuteStatus(isMuted) {
@@ -54,9 +75,9 @@ export default class GameView {
     }
 
     showKillMessage(killerName, victimName, killerColor, victimColor, victimLength) {
-        this.setKillMessageWithTimer(`<span style='color: ${killerColor}'>${killerName}</span> killed ` +
-            `<span style='color: ${victimColor}'>${victimName}</span>` +
-            ` and grew by <span style='color: ${killerColor}'>${victimLength}</span>`);
+        this.setKillMessageWithTimer(`<span style='color: ${killerColor}'>${killerName}</span> killed `
+            + `<span style='color: ${victimColor}'>${victimName}</span>`
+            + ` and grew by <span style='color: ${killerColor}'>${victimLength}</span>`);
     }
 
     showKilledEachOtherMessage(victimSummaries) {
@@ -77,8 +98,8 @@ export default class GameView {
 
     showNotification(notification, playerColor) {
         const notificationDiv = DomHelper.getNotificationsDiv();
-        const formattedNotification = `<div><span class='time-label'>${new Date().toLocaleTimeString()} - </span>` +
-            `<span style='color: ${playerColor}'>${notification}<span/></div>`;
+        const formattedNotification = `<div><span class='time-label'>${new Date().toLocaleTimeString()} - </span>`
+            + `<span style='color: ${playerColor}'>${notification}<span/></div>`;
         notificationDiv.innerHTML = formattedNotification + notificationDiv.innerHTML;
     }
 
@@ -87,23 +108,23 @@ export default class GameView {
     }
 
     showPlayerStats(playerStats) {
-        let formattedScores = '<div class="player-stats-header"><span class="image"></span>' +
-            '<span class="name">Name</span>' +
-            '<span class="stat">Score</span>' +
-            '<span class="stat">High</span>' +
-            '<span class="stat">Kills</span>' +
-            '<span class="stat">Deaths</span></div>';
+        let formattedScores = '<div class="player-stats-header"><span class="image"></span>'
+            + '<span class="name">Name</span>'
+            + '<span class="stat">Score</span>'
+            + '<span class="stat">High</span>'
+            + '<span class="stat">Kills</span>'
+            + '<span class="stat">Deaths</span></div>';
         for (const playerStat of playerStats) {
             let playerImageElement = '';
             if (playerStat.base64Image) {
                 playerImageElement = `<img src=${playerStat.base64Image} class='player-stats-image'></img>`;
             }
-            formattedScores += `<div class='player-stats-content'><span class='image'>${playerImageElement}</span>` +
-                `<span class='name' style='color: ${playerStat.color}'>${playerStat.name}</span>` +
-                `<span class='stat'>${playerStat.score}</span>` +
-                `<span class='stat'>${playerStat.highScore}</span>` +
-                `<span class='stat'>${playerStat.kills}</span>` +
-                `<span class='stat'>${playerStat.deaths}</span></div>`;
+            formattedScores += `<div class='player-stats-content'><span class='image'>${playerImageElement}</span>`
+                + `<span class='name' style='color: ${playerStat.color}'>${playerStat.name}</span>`
+                + `<span class='stat'>${playerStat.score}</span>`
+                + `<span class='stat'>${playerStat.highScore}</span>`
+                + `<span class='stat'>${playerStat.kills}</span>`
+                + `<span class='stat'>${playerStat.deaths}</span></div>`;
         }
         DomHelper.setPlayerStatsDivText(formattedScores);
     }
@@ -140,8 +161,8 @@ export default class GameView {
 
     _handleKeyDown(e) {
         // Prevent keyboard scrolling default behavior
-        if ((e.keyCode === UP_ARROW_KEYCODE || e.keyCode === DOWN_ARROW_KEYCODE) ||
-             (e.keyCode === SPACE_BAR_KEYCODE && e.target === DomHelper.getBody())) {
+        if ((e.keyCode === UP_ARROW_KEYCODE || e.keyCode === DOWN_ARROW_KEYCODE)
+             || (e.keyCode === SPACE_BAR_KEYCODE && e.target === DomHelper.getBody())) {
             e.preventDefault();
         }
 
@@ -207,8 +228,15 @@ export default class GameView {
         }
     }
 
-    _initEventHandling(botChangeCallback, foodChangeCallback, muteAudioCallback, playerColorChangeCallback, speedChangeCallback,
-        startLengthChangeCallback, toggleGridLinesCallback) {
+    _initEventHandling(
+        botChangeCallback,
+        foodChangeCallback,
+        muteAudioCallback,
+        playerColorChangeCallback,
+        speedChangeCallback,
+        startLengthChangeCallback,
+        toggleGridLinesCallback
+    ) {
         // Player controls
         DomHelper.getChangeColorButton().addEventListener('click', playerColorChangeCallback);
         DomHelper.getChangeNameButton().addEventListener('click', this._handleChangeNameButtonClick.bind(this));
@@ -224,29 +252,53 @@ export default class GameView {
         window.addEventListener('keydown', this._handleKeyDown.bind(this), true);
 
         // Admin controls
-        DomHelper.getIncreaseBotsButton().addEventListener('click',
-            botChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.INCREASE));
-        DomHelper.getDecreaseBotsButton().addEventListener('click',
-            botChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.DECREASE));
-        DomHelper.getResetBotsButton().addEventListener('click',
-            botChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.RESET));
-        DomHelper.getIncreaseFoodButton().addEventListener('click',
-            foodChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.INCREASE));
-        DomHelper.getDecreaseFoodButton().addEventListener('click',
-            foodChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.DECREASE));
-        DomHelper.getResetFoodButton().addEventListener('click',
-            foodChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.RESET));
-        DomHelper.getIncreaseSpeedButton().addEventListener('click',
-            speedChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.INCREASE));
-        DomHelper.getDecreaseSpeedButton().addEventListener('click',
-            speedChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.DECREASE));
-        DomHelper.getResetSpeedButton().addEventListener('click',
-            speedChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.RESET));
-        DomHelper.getIncreaseStartLengthButton().addEventListener('click',
-            startLengthChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.INCREASE));
-        DomHelper.getDecreaseStartLengthButton().addEventListener('click',
-            startLengthChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.DECREASE));
-        DomHelper.getResetStartLengthButton().addEventListener('click',
-            startLengthChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.RESET));
+        DomHelper.getIncreaseBotsButton().addEventListener(
+            'click',
+            botChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.INCREASE),
+        );
+        DomHelper.getDecreaseBotsButton().addEventListener(
+            'click',
+            botChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.DECREASE),
+        );
+        DomHelper.getResetBotsButton().addEventListener(
+            'click',
+            botChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.RESET),
+        );
+        DomHelper.getIncreaseFoodButton().addEventListener(
+            'click',
+            foodChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.INCREASE),
+        );
+        DomHelper.getDecreaseFoodButton().addEventListener(
+            'click',
+            foodChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.DECREASE),
+        );
+        DomHelper.getResetFoodButton().addEventListener(
+            'click',
+            foodChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.RESET),
+        );
+        DomHelper.getIncreaseSpeedButton().addEventListener(
+            'click',
+            speedChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.INCREASE),
+        );
+        DomHelper.getDecreaseSpeedButton().addEventListener(
+            'click',
+            speedChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.DECREASE),
+        );
+        DomHelper.getResetSpeedButton().addEventListener(
+            'click',
+            speedChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.RESET),
+        );
+        DomHelper.getIncreaseStartLengthButton().addEventListener(
+            'click',
+            startLengthChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.INCREASE),
+        );
+        DomHelper.getDecreaseStartLengthButton().addEventListener(
+            'click',
+            startLengthChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.DECREASE),
+        );
+        DomHelper.getResetStartLengthButton().addEventListener(
+            'click',
+            startLengthChangeCallback.bind(this, ClientConfig.INCREMENT_CHANGE.RESET),
+        );
     }
 }
