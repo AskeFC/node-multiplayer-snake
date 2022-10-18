@@ -20,17 +20,17 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
-    "eslint-plugin-react": "^7.31.8",
-    "mocha": "^10.0.0",
+    "eslint-plugin-react": "^7.31.10",
+    "mocha": "^10.1.0",
     "nyc": "^15.1.0",
-    "socket.io-client": "^4.5.2",
+    "socket.io-client": "^4.5.3",
     "supertest": "^6.3.0"
   },
   "dependencies": {
     "express": "^4.18.2",
     "less-middleware": "^3.1.0",
     "serve-favicon": "^2.5.0",
-    "socket.io": "^4.5.2",
+    "socket.io": "^4.5.3",
     "validator": "^13.7.0"
   },
   "license": "MIT"
