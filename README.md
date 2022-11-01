@@ -1,15 +1,15 @@
-[![](node-multiplayer-snake.gif)](https://node-multiplayer-snake.herokuapp.com/)
+[![](node-multiplayer-snake.gif)](https://snake2.askefc.net)
 ![Alt](snake.gif)
-[![Build Status](https://travis-ci.org/simondiep/node-multiplayer-snake.svg?branch=master)](https://travis-ci.org/simondiep/node-multiplayer-snake)
-[![Dependency Status](https://david-dm.org/simondiep/node-multiplayer-snake/status.svg?style=flat)](https://david-dm.org/simondiep/node-multiplayer-snake)  
+~~[![Build Status](https://travis-ci.org/simondiep/node-multiplayer-snake.svg?branch=master)](https://travis-ci.org/simondiep/node-multiplayer-snake)~~
+~~[![Dependency Status](https://david-dm.org/simondiep/node-multiplayer-snake/status.svg?style=flat)](https://david-dm.org/simondiep/node-multiplayer-snake)~~
 
 A multiplayer snake game built on NodeJs, Express, socket.io, and JavaScript ES6.  No unnecessary libraries.
 
-Live demo [Here](https://node-multiplayer-snake.herokuapp.com/)
+Live demo [Here](https://snake2.askefc.net)
 
 ### Getting Started
 
-Install the latest [Node.js](http://nodejs.org) 8 Stable
+Install the latest [Node.js](http://nodejs.org) 19
 
 `git clone https://github.com/simondiep/node-multiplayer-snake.git`
 
@@ -80,13 +80,13 @@ Open your web browser to `localhost:3000`
  - clean up class constructors that take a lot of params, and instead pass in a single object
  - add game instructions possibly to a dismissible dialog
  - add a legend for different power ups
- - [Issues](https://github.com/simondiep/node-multiplayer-snake/issues)
+ - [Issues](https://github.com/AskeFC/node-multiplayer-snake/issues)
 
 ### Longer-term Tech Debt
  - Chai does not support --use_strict mode, yet.  Replace chai or wait for support.
     - This means "use strict"; is needed in all node modules, even though it is redundant
  - Switch to SASS when Windows makes it easier to install [node-gyp dependencies](https://github.com/nodejs/node-gyp/issues/629).
-   - [PR still open](https://github.com/nodejs/node-gyp/pull/867) as of March 22, 2016.
+   - ~~[PR closed](https://github.com/nodejs/node-gyp/pull/867).~~
 
 ### Technologies to look into
  - Replace console.log with logging framework
