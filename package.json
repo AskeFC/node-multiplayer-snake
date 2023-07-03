@@ -7,7 +7,8 @@
     "url": "https://github.com/AskeFC/node-multiplayer-snake.git"
   },
   "scripts": {
-    "start": "node app.js",
+    "nodestart": "node app.js",
+    "bunstart": "bun app.js",
     "pretest": "eslint .",
     "test": "mocha",
     "coverage": "nyc node_modules/mocha/bin/_mocha",
