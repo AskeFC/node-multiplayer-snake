@@ -6,6 +6,8 @@
     "type": "git",
     "url": "https://github.com/AskeFC/node-multiplayer-snake.git"
   },
+  "main": "app.js",
+  "type": "module",
   "scripts": {
     "nodestart": "node app.js",
     "bunstart": "bun app.js",
